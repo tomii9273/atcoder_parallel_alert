@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/tomii9273/atcoder_parallel_alert/issues"
   },
-  "homepage": "https://github.com/tomii9273/atcoder_parallel_alert#readme"
+  "homepage": "https://github.com/tomii9273/atcoder_parallel_alert#readme",
+  "devDependencies": {
+    "eslint": "^8.48.0"
+  }
 }
