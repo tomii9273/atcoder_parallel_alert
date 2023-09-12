@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "特定のURLを開いている場合、全タブに文字列を挿入",
   "permissions": ["tabs", "activeTab", "storage", "scripting"],
-  "host_permissions": ["https://*/*", "http://*/*"],
+  "host_permissions": ["https://atcoder.jp/*"],
   "background": {
     "service_worker": "background.js"
   },
