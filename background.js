@@ -1,11 +1,22 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "complete" && tab.url.includes("ahc")) {
+  if (changeInfo.status === "complete") {
     chrome.tabs.query({}, (tabs) => {
+      let hasAHC = false;
       for (let t of tabs) {
-        chrome.scripting.executeScript({
-          target: { tabId: t.id },
-          func: insertWarningText,
-        });
+        if (t.url.includes("atcoder") && t.url.includes("ahc")) {
+          hasAHC = true;
+          break;
+        }
+      }
+      if (hasAHC) {
+        for (let t of tabs) {
+          if (t.url.includes("atcoder") && !t.url.includes("ahc")) {
+            chrome.scripting.executeScript({
+              target: { tabId: t.id },
+              func: insertWarningText,
+            });
+          }
+        }
       }
     });
   }
