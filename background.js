@@ -23,10 +23,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 function insertWarningText() {
-  const bodyContent = document.body.innerHTML;
-  const newContent = bodyContent.replace(
-    /ソースコードは「Main.<i>拡張子<\/i>」で保存されます<\/span>/g,
-    'ソースコードは「Main.<i>拡張子</i>」で、保存されます</span><br><br><span style="color:red;"><b><font size="7">【警告】これはAHCではありません！</font></b></span>'
+  const element = document.querySelector(
+    "div.col-sm-9.col-md-10 span[class='gray']"
   );
-  document.body.innerHTML = newContent;
+  if (element) {
+    element.innerHTML =
+      '</span><br><span style="color:red;"><b><font size="7">【警告】これは AHC ではありません！</font></b></span><br><span class="gray">※ 512 KiB まで</span>';
+  }
 }
