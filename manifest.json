@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "警告文字列挿入",
+  "name": "AtCoder Parallel Alert",
   "version": "1.0",
-  "description": "特定のURLを開いている場合、全タブに文字列を挿入",
+  "description": "AtCoder で AHC とそれ以外のコンテストの問題文を同時に開いている場合に、後者の提出欄の近くに警告文を表示します。",
   "permissions": ["tabs", "activeTab", "storage", "scripting"],
   "host_permissions": ["https://atcoder.jp/*"],
   "background": {
