@@ -3,7 +3,7 @@
   "name": "AtCoder Parallel Alert",
   "version": "1.0",
   "description": "AtCoder で AHC とそれ以外のコンテストの問題文を同時に開いている場合に、後者の提出欄の近くに警告文を表示します。",
-  "permissions": ["tabs", "activeTab", "storage", "scripting"],
+  "permissions": ["tabs", "scripting"],
   "host_permissions": ["https://atcoder.jp/*"],
   "background": {
     "service_worker": "background.js"
