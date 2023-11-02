@@ -1,21 +1,33 @@
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "complete" && tab.url.includes("ahc")) {
+chrome.tabs.onUpdated.addListener((_tabId, changeInfo, _tab) => {
+  if (changeInfo.status === "complete") {
     chrome.tabs.query({}, (tabs) => {
+      let hasAHC = false;
       for (let t of tabs) {
-        chrome.scripting.executeScript({
-          target: { tabId: t.id },
-          func: insertWarningText,
-        });
+        if (t.url.includes("atcoder") && t.url.includes("ahc")) {
+          hasAHC = true;
+          break;
+        }
+      }
+      if (hasAHC) {
+        for (let t of tabs) {
+          if (t.url.includes("atcoder") && !t.url.includes("ahc")) {
+            chrome.scripting.executeScript({
+              target: { tabId: t.id },
+              func: insertWarningText,
+            });
+          }
+        }
       }
     });
   }
 });
 
 function insertWarningText() {
-  const bodyContent = document.body.innerHTML;
-  const newContent = bodyContent.replace(
-    /ソースコードは「Main.<i>拡張子<\/i>」で保存されます/g,
-    'ソースコードは「Main.<i>拡張子</i>」で保存されます\n<span style="color:red;">警告！！！！！！これはABCです！！！！！</span>'
+  const element = document.querySelector(
+    "div.col-sm-9.col-md-10 span[class='gray']"
   );
-  document.body.innerHTML = newContent;
+  if (element) {
+    element.innerHTML =
+      '</span><br><span style="color:red;"><b><font size="7">【警告】これは AHC ではありません！</font></b></span><br><span class="gray">※ 512 KiB まで</span>';
+  }
 }
