@@ -1,6 +1,6 @@
 {
   "name": "atcoder_parallel_alert",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "AtCoder で、AHC とそれ以外のコンテストの問題文を同時に開いている場合、後者の提出欄に警告文を表示する Chrome 拡張機能です。",
   "main": "app/background.js",
   "scripts": {
